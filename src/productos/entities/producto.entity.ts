@@ -1,7 +1,7 @@
 // src/productos/entities/producto.entity.ts
 import { CategoriasEnum } from 'src/common/enums/categorias.enum';
 import { EdadEnum } from 'src/common/enums/edad.enum';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('productos')
 export class ProductoEntity {
@@ -28,4 +28,7 @@ export class ProductoEntity {
 
   @Column({ type: 'enum', enum: EdadEnum, nullable: false, name: 'edad' })
   edad: EdadEnum;
+
+  @DeleteDateColumn({ name: 'deleted_at', nullable: true })
+  deletedAt?: Date;
 }
